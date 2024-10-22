@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mem_detail_page.dart';  // 팀원 디테일 페이지 추가
-import 'bin_page.dart';
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,182 +7,139 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'FT-ieland intro app',
+      title: 'FT-ieland Intro App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.black,
       ),
-      home: const MyHomePage(title: '우리 팀을 소개합니다~~~~~~!'),
+      home: const MyHomePage(title: 'FT-ie 소개팅land'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
   final String title;
 
+  const MyHomePage({super.key, required this.title});
+
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      lowerBound: 0.95,
+      upperBound: 1.0,
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onButtonPressed() {
+    _controller.forward().then((_) => _controller.reverse());
+  }
+
   @override
   Widget build(BuildContext context) {
-    double imageWidth = MediaQuery.of(context).size.width / 3;
-
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
       body: Stack(
         children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 200,
-            child: Image.asset(
-              'images/ft-island.png',
-              fit: BoxFit.cover,
+          // Gradient Background
+          Positioned.fill(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color(0xFFF48FB1),
+                    Color(0xFFCE93D8),
+                    Color(0xFFB39DDB),
+                  ],
+                ),
+              ),
             ),
           ),
-          Positioned.fill(
-            top: 220,
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    "팀명: FT-ieland",
-                    style: TextStyle(
-                      fontSize: 45,
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  const Text(
-                    "우리 팀원들",
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.deepOrange,
-                    ),
-                  ),
-                  const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => MemberDetailPage(
-                                name: "수진",
-                                imagePath: 'images/수진.jpg',
-                              ),
-                            ),
-                          );
-                        },
-                        child: Hero(
-                          tag: "수진",
-                          child: TeamMemberCard(imagePath: 'images/수진.jpg', name: '수진'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => MemberDetailPage(
-                                name: "연우",
-                                imagePath: 'images/연우.png',
-                              ),
-                            ),
-                          );
-                        },
-                        child: Hero(
-                          tag: "연우",
-                          child: TeamLeaderCard(imagePath: 'images/연우.png', name: '팀장 연우'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => MemberDetailPage(
-                                name: "나린",
-                                imagePath: 'images/나린.png',
-                              ),
-                            ),
-                          );
-                        },
-                        child: Hero(
-                          tag: "나린",
-                          child: TeamMemberCard(imagePath: 'images/나린.png', name: '나린'),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => MemberDetailPage(
-                                name: "상현",
-                                imagePath: 'images/상현.png',
-                              ),
-                            ),
-                          );
-                        },
-                        child: Hero(
-                          tag: "상현",
-                          child: TeamMemberCard(imagePath: 'images/상현.png', name: '상현'),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => MemberDetailPage(
-                                name: "현지",
-                                imagePath: 'images/현지.jpg',
-                              ),
-                            ),
-                          );
-                        },
-                        child: Hero(
-                          tag: "현지",
-                          child: TeamMemberCard(imagePath: 'images/현지.jpg', name: '현지'),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 40), // 빈페이지 버튼 위의 간격을 추가
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.orangeAccent, // 수정됨
-                    ),
+          // Heart Pattern Background
+          const Positioned.fill(
+            child: HeartPattern(),
+          ),
+          // Center Button with Animation
+          Center(
+            child: GestureDetector(
+              onTapDown: (_) => _onButtonPressed(),
+              child: ScaleTransition(
+                scale: _controller,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => BinPage())
+                        MaterialPageRoute(builder: (_) =>  HomeTitle()), // Navigate to BinPage
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.pinkAccent, // Button color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                    ),
                     child: const Text(
-                      "빈페이지로 이동",
-                      style: TextStyle(fontSize: 20),
+                      '만남을 시작하시겠습니까?',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold,
+                        shadows: [
+                          Shadow(
+                            blurRadius: 10.0,
+                            color: Colors.black45,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-                ],
+                ),
+              ),
+            ),
+          ),
+          // Team name at the top with shadow effect
+          const Positioned(
+            top: 200, // Increase this value to move it lower
+            left: 0,
+            right: 0,
+            child: Center(
+              child: Text(
+                "FT-ie 소개팅land",
+                style: TextStyle(
+                  fontSize: 45,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 10.0,
+                      color: Colors.black45,
+                      offset: Offset(2, 2),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -193,76 +149,58 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-// 팀원 카드를 정의한 클래스
-class TeamMemberCard extends StatelessWidget {
-  final String imagePath;
-  final String name;
-
-  const TeamMemberCard({super.key, required this.imagePath, required this.name});
+// Custom Widget for Heart Pattern Background
+class HeartPattern extends StatelessWidget {
+  const HeartPattern({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ClipOval(
-          child: Image.asset(
-            imagePath,
-            width: 60,
-            height: 60,
-            fit: BoxFit.cover,
-          ),
-        ),
-        const SizedBox(height: 5),
-        Text(
-          name,
-          style: const TextStyle(
-            fontSize: 20, // 이름 크기 수정
-            color: Colors.white,
-          ),
-        ),
-      ],
+    return Wrap(
+      alignment: WrapAlignment.center,
+      spacing: 20.0,
+      runSpacing: 60.0,
+      children: List.generate(100, (index) {
+        return HeartIcon();
+      }),
     );
   }
 }
 
-// 팀장을 강조한 카드
-class TeamLeaderCard extends StatelessWidget {
-  final String imagePath;
-  final String name;
+// Animated Heart Icon Widget
+class HeartIcon extends StatefulWidget {
+  @override
+  _HeartIconState createState() => _HeartIconState();
+}
 
-  const TeamLeaderCard({super.key, required this.imagePath, required this.name});
+class _HeartIconState extends State<HeartIcon> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
+    _animation = Tween<double>(begin: 0.5, end: 1.0).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: Colors.yellow,
-              width: 4.0,
-            ),
-          ),
-          child: ClipOval(
-            child: Image.asset(
-              imagePath,
-              width: 80,
-              height: 80,
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        const SizedBox(height: 5),
-        Text(
-          name,
-          style: const TextStyle(
-            fontSize: 20, // 이름 크기 수정
-            fontWeight: FontWeight.bold,
-            color: Colors.yellow,
-          ),
-        ),
-      ],
+    return ScaleTransition(
+      scale: _animation,
+      child: Icon(
+        Icons.favorite,
+        size: 50.0,
+        color: Colors.white.withOpacity(0.2), // Lighter color for background
+      ),
     );
   }
 }
