@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'yw_detail_page.dart';
-// import 'hj_detail_page.dart';
-// import 'nl_detail_page.dart';
-// import 'sj_detail_page.dart';
-// import 'sh_detail_page.dart';
+import 'hj_detail_page.dart';
+import 'nl_detail_page.dart';
+import 'sj_detail_page.dart';
+import 'sh_detail_page.dart';
 
 class HomeTitle extends StatelessWidget {
   @override
@@ -23,43 +23,53 @@ class TeamGrid extends StatelessWidget {
   final List<Map<String, dynamic>> members = [
     {
       'name': '문현지',
-      'homeImage': 'images/현지.jpg',
+      'homeImage': 'images/현지.png',
       'detailImage': 'images/현지_i.jpg',
-      'notifications': '1',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => YWDetailPage(name: name, imagePath: imagePath, age: age),
-      'age': '27'
+      'notifications': '1', // 알림 숫자
+      'page': (String name, String imagePath, int age, int likeCount) =>
+          HJDetailPage(name: name, imagePath: imagePath, age: age, likeCount: likeCount),
+      'age': '27',
+      'likeCount': 0 // 초기 좋아요 수
     },
     {
       'name': '김나린',
-      'homeImage': 'images/나린.png',
+      'homeImage': 'images/나린.jpg',
       'detailImage': 'images/나린_i.jpg',
-      'notifications': '3',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => YWDetailPage(name: name, imagePath: imagePath, age: age),
-      'age': '24'
+      'notifications': '3', // 알림 숫자
+      'page': (String name, String imagePath, int age, int likeCount) =>
+          NLDetailPage(name: name, imagePath: imagePath, age: age, likeCount: likeCount),
+      'age': '24',
+      'likeCount': 0 // 초기 좋아요 수
     },
     {
       'name': '도연우',
       'homeImage': 'images/연우.png',
       'detailImage': 'images/연우_i.jpg',
-      'notifications': '0',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => YWDetailPage(name: name, imagePath: imagePath, age: age),
-      'age': '24'
+      'notifications': '0', // 알림 숫자
+      'page': (String name, String imagePath, int age, int likeCount) =>
+          YWDetailPage(name: name, imagePath: imagePath, age: age, likeCount: likeCount),
+      'age': '24',
+      'likeCount': 0 // 초기 좋아요 수
     },
     {
       'name': '장수진',
       'homeImage': 'images/수진.jpg',
       'detailImage': 'images/수진_i.png',
-      'notifications': '2',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => YWDetailPage(name: name, imagePath: imagePath, age: age),
-      'age': '26'
+      'notifications': '2', // 알림 숫자
+      'page': (String name, String imagePath, int age, int likeCount) =>
+          SJDetailPage(name: name, imagePath: imagePath, age: age, likeCount: likeCount),
+      'age': '26',
+      'likeCount': 0 // 초기 좋아요 수
     },
     {
       'name': '이상현',
       'homeImage': 'images/상현.png',
       'detailImage': 'images/상현_i.jpg',
-      'notifications': '5',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => YWDetailPage(name: name, imagePath: imagePath, age: age),
-      'age': '26'
+      'notifications': '5', // 알림 숫자
+      'page': (String name, String imagePath, int age, int likeCount) =>
+          SHDetailPage(name: name, imagePath: imagePath, age: age, likeCount: likeCount),
+      'age': '26',
+      'likeCount': 0 // 초기 좋아요 수
     },
   ];
 
@@ -142,6 +152,7 @@ class TeamGrid extends StatelessWidget {
               member['name']!,
               member['detailImage']!, // 상세 페이지 이미지 전달
               int.parse(member['age']!), // 문자열을 정수로 변환
+              member['likeCount'], // likeCount 전달
             ),
           ),
         );
@@ -165,7 +176,7 @@ class TeamGrid extends StatelessWidget {
                   radius: 25,
                   backgroundColor: Colors.pink,
                   child: Text(
-                    member['notifications']!,  // 알림 숫자 표시
+                    member['notifications']!, // 알림 숫자 표시
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class YWDetailPage extends StatefulWidget {
+class SJDetailPage extends StatefulWidget {
   final String name;
   final int age;
   final String imagePath;
   final int likeCount; // 좋아요 수를 받아오는 변수 추가
 
-  const YWDetailPage({
+  const SJDetailPage({
     super.key,
     required this.name,
     required this.imagePath,
@@ -15,10 +15,10 @@ class YWDetailPage extends StatefulWidget {
   });
 
   @override
-  State<YWDetailPage> createState() => _YWDetailPageState();
+  State<SJDetailPage> createState() => _SJDetailPageState();
 }
 
-class _YWDetailPageState extends State<YWDetailPage> {
+class _SJDetailPageState extends State<SJDetailPage> {
   late int likeCount; // 상태 변수로 변경
 
   @override
@@ -60,7 +60,7 @@ class _YWDetailPageState extends State<YWDetailPage> {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    "산업공학과",
+                    "기계공학",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.grey,
@@ -68,7 +68,7 @@ class _YWDetailPageState extends State<YWDetailPage> {
                   ),
                   const SizedBox(height: 5),
                   const Text(
-                    "#집 #귀여운거",
+                    "#한식파 #등산시작 #강아지하양이",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.pinkAccent,
@@ -113,11 +113,11 @@ class _YWDetailPageState extends State<YWDetailPage> {
                   // 추가 정보
                   Column(
                     children: [
-                      buildDetailRow("생일", "10월 12일"),
-                      buildDetailRow("MBTI", "ISTJ"),
-                      buildDetailRow("역할", "서기✍️, 팀장👑"),
-                      buildDetailRow("희망직무", "데이터분석/기획"),
-                      buildDetailRow("한마디", "안녕하세요 감자입니다 뭘봐그만봐"),
+                      buildDetailRow("생일", "03월 03일"),
+                      buildDetailRow("MBTI", "INTP"),
+                      buildDetailRow("역할", "점메추🍚"),
+                      buildDetailRow("희망직무", "제품/테스트 엔지니어"),
+                      buildDetailRow("한마디", "볼 것 좀 추천해주세요"),
                     ],
                   ),
                 ],

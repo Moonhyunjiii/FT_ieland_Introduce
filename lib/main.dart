@@ -7,6 +7,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +24,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   final String title;
-
   const MyHomePage({super.key, required this.title});
 
   @override
@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) =>  HomeTitle()), // Navigate to BinPage
+                        MaterialPageRoute(builder: (_) => HomeTitle()), // Navigate to HomeTitle
                       );
                     },
                     style: ElevatedButton.styleFrom(
