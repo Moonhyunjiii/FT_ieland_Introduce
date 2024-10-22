@@ -1,11 +1,10 @@
-/*
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'yw_detail_page.dart';
-import 'hj_detail_page.dart';
-import 'nl_detail_page.dart';
-import 'sj_detail_page.dart';
-import 'sh_detail_page.dart';
+// import 'hj_detail_page.dart';
+// import 'nl_detail_page.dart';
+// import 'sj_detail_page.dart';
+// import 'sh_detail_page.dart';
 
 class HomeTitle extends StatelessWidget {
   @override
@@ -30,7 +29,7 @@ class TeamGrid extends StatelessWidget {
       'homeImage': 'images/현지.png',
       'detailImage': 'images/현지_i.jpg',
       'notifications': '1',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => HJDetailPage(name: name, imagePath: imagePath, age: age),
+      // 'page': (String name, String imagePath, int age) => HJDetailPage(name: name, imagePath: imagePath, age: age),
       'age': '27'
     },
     {
@@ -38,7 +37,7 @@ class TeamGrid extends StatelessWidget {
       'homeImage': 'images/나린.jpg',
       'detailImage': 'images/나린_i.jpg',
       'notifications': '3',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => NLDetailPage(name: name, imagePath: imagePath, age: age),
+      // 'page': (String name, String imagePath, int age) => NLDetailPage(name: name, imagePath: imagePath, age: age),
       'age': '24'
     },
     {
@@ -54,7 +53,7 @@ class TeamGrid extends StatelessWidget {
       'homeImage': 'images/수진.jpg',
       'detailImage': 'images/수진_i.png',
       'notifications': '2',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => SJDetailPage(name: name, imagePath: imagePath, age: age),
+      // 'page': (String name, String imagePath, int age) => SJDetailPage(name: name, imagePath: imagePath, age: age),
       'age': '26'
     },
     {
@@ -62,7 +61,7 @@ class TeamGrid extends StatelessWidget {
       'homeImage': 'images/상현.png',
       'detailImage': 'images/상현_i.jpg',
       'notifications': '5',  // 알림 숫자
-      'page': (String name, String imagePath, int age) => SHDetailPage(name: name, imagePath: imagePath, age: age),
+      // 'page': (String name, String imagePath, int age) => SHDetailPage(name: name, imagePath: imagePath, age: age),
       'age': '26'
     },
   ];
@@ -179,4 +178,3 @@ class TeamGrid extends StatelessWidget {
     );
   }
 }
-*/
