@@ -90,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => HomeTitle()), // Navigate to BinPage
+                        MaterialPageRoute(builder: (_) => HomeTitle()), // Navigate to HomeTitle
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -122,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           ),
           // Team name at the top with shadow effect
           const Positioned(
-            top: 150, // Increase this value to move it lower
+            top: 200, // Increase this value to move it lower
             left: 0,
             right: 0,
             child: Center(

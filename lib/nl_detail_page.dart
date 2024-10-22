@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class YWDetailPage extends StatefulWidget {
+class NLDetailPage extends StatefulWidget {
   final String name;
   final int age;
   final String imagePath;
   final int likeCount; // 좋아요 수를 받아오는 변수 추가
 
-  const YWDetailPage({
+  const NLDetailPage({
     super.key,
     required this.name,
     required this.imagePath,
@@ -15,10 +15,10 @@ class YWDetailPage extends StatefulWidget {
   });
 
   @override
-  State<YWDetailPage> createState() => _YWDetailPageState();
+  State<NLDetailPage> createState() => _NLDetailPageState();
 }
 
-class _YWDetailPageState extends State<YWDetailPage> {
+class _NLDetailPageState extends State<NLDetailPage> {
   late int likeCount; // 상태 변수로 변경
 
   @override
@@ -60,7 +60,7 @@ class _YWDetailPageState extends State<YWDetailPage> {
                   ),
                   const SizedBox(height: 10),
                   const Text(
-                    "산업공학과",
+                    "경제학, 통계학",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.grey,
@@ -68,7 +68,7 @@ class _YWDetailPageState extends State<YWDetailPage> {
                   ),
                   const SizedBox(height: 5),
                   const Text(
-                    "#집 #귀여운거",
+                    "#도파민중독 #릴스 #쇼츠",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.pinkAccent,
@@ -113,11 +113,11 @@ class _YWDetailPageState extends State<YWDetailPage> {
                   // 추가 정보
                   Column(
                     children: [
-                      buildDetailRow("생일", "10월 12일"),
-                      buildDetailRow("MBTI", "ISTJ"),
-                      buildDetailRow("역할", "서기✍️, 팀장👑"),
+                      buildDetailRow("생일", "2월 21일"),
+                      buildDetailRow("MBTI", "ESFJ"),
+                      buildDetailRow("역할", "클리닝🫧"),
                       buildDetailRow("희망직무", "데이터분석/기획"),
-                      buildDetailRow("한마디", "안녕하세요 감자입니다 뭘봐이제그만봐"),
+                      buildDetailRow("한마디", "웃자^_^!"),
                     ],
                   ),
                 ],
