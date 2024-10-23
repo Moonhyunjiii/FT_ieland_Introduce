@@ -30,7 +30,8 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -90,7 +91,9 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(
-                        MaterialPageRoute(builder: (_) => HomeTitle()), // Navigate to HomeTitle
+                        MaterialPageRoute(
+                            builder: (_) =>
+                                HomeTitle()), // Navigate to HomeTitle
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -98,7 +101,8 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 50.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 15.0, horizontal: 50.0),
                     ),
                     child: const Text(
                       '만남을 시작하시겠습니까?',
@@ -172,7 +176,8 @@ class HeartIcon extends StatefulWidget {
   _HeartIconState createState() => _HeartIconState();
 }
 
-class _HeartIconState extends State<HeartIcon> with SingleTickerProviderStateMixin {
+class _HeartIconState extends State<HeartIcon>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
