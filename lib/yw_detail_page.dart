@@ -117,7 +117,7 @@ class _YWDetailPageState extends State<YWDetailPage> {
                       buildDetailRow("MBTI", "ISTJ"),
                       buildDetailRow("역할", "서기✍️, 팀장👑"),
                       buildDetailRow("희망직무", "데이터분석/기획"),
-                      buildDetailRow("한마디", "안녕하세요 감자입니다 뭘봐이제그만봐"),
+                      buildDetailRow("한마디", "안녕하세요 감자입니다 뭘봐그만봐"),
                     ],
                   ),
                 ],
