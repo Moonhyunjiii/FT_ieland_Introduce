@@ -16,6 +16,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.black,
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400), // Regular
+          bodyMedium: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w300), // Light
+          headlineLarge: TextStyle(fontSize: 45.0, fontWeight: FontWeight.w700), // Bold (대제목)
+        ),
       ),
       home: const MyHomePage(title: 'FT-ie 소개팅land'),
     );
