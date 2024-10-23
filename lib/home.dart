@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
+import 'team_cowork_page.dart';
+import 'LinkListviewPage.dart';
 import 'yw_detail_page.dart';
 import 'hj_detail_page.dart';
 import 'nl_detail_page.dart';
@@ -11,9 +13,7 @@ class HomeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: TeamGrid(),
-      ),
+      home: TeamGrid(),
     );
   }
 }
@@ -77,10 +77,16 @@ class _TeamGridState extends State<TeamGrid> {
     },
   ];
 
+  var pages = [
+    LinkListviewPage(), // 인스타그램 페이지
+    HomeTitle(), // 메인화면 페이지
+    TeamCoworkPage(), // 노션 페이지
+  ];
+
   int _selectedNaviIndex = 1; // 기본 선택 인덱스
 
   // 바텀바 아이템 선택 시 색상 변화 함수
-  _onBottomNaviItemTapped(int index) {
+  void _onBottomNaviItemTapped(int index) {
     setState(() {
       _selectedNaviIndex = index;
     });
@@ -93,47 +99,16 @@ class _TeamGridState extends State<TeamGrid> {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround, // 화면을 균일하게 나누기 위해 설정
-        children: [
-          SizedBox(height: screenHeight * 0.05), // 여백 추가
-          const Text(
-            'FT ie-land',
-            style: TextStyle(
-              fontSize: 40,
-              color: Color(0xFFFF166F),
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          SizedBox(width: screenWidth * 0.1),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildMemberProfile(context, members[0], screenHeight, screenWidth),
-              SizedBox(width: screenWidth * 0.07),
-              buildMemberProfile(context, members[1], screenHeight, screenWidth),
-            ],
-          ),
-          buildMemberProfile(context, members[2], screenHeight, screenWidth),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              buildMemberProfile(context, members[3], screenHeight, screenWidth),
-              SizedBox(width: screenWidth * 0.07),
-              buildMemberProfile(context, members[4], screenHeight, screenWidth),
-            ],
-          ),
-        ],
-      ),
+      body: pages[_selectedNaviIndex], // 선택된 페이지 표시
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Colors.white, // 배경색 설정
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 0,
               blurRadius: 4,
-              offset: Offset(0, -4), // 그림자 방향
+              offset: Offset(0, -4),
             ),
           ],
         ),
@@ -144,8 +119,7 @@ class _TeamGridState extends State<TeamGrid> {
           selectedItemColor: Color(0xFFFF166F), // 선택된 아이콘 색상
           unselectedItemColor: Color(0xFFD9D9D9), // 선택되지 않은 아이콘 색상
           backgroundColor: Colors.white,
-
-          onTap: _onBottomNaviItemTapped,
+          onTap: _onBottomNaviItemTapped, // 탭 시 페이지 변경
           items: [
             BottomNavigationBarItem(
               icon: Image.asset(
