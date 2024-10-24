@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'bottom_nav_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -97,25 +97,32 @@ class _MyHomePageState extends State<MyHomePage>
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                            builder: (_) =>
-                                HomeTitle()), // Navigate to HomeTitle
+                          builder: (_) => BottomNavHome(),
+                        ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pinkAccent, // Button color
+                      backgroundColor: Colors.pinkAccent,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
+                      // 화면 크기에 따라 버튼 크기 조정
+                      minimumSize: Size(
+                        MediaQuery.of(context).size.width * 0.8,  // 화면 너비의 80%
+                        MediaQuery.of(context).size.height * 0.07, // 화면 높이의 7%
+                      ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 15.0, horizontal: 50.0),
+                        vertical: 15.0,
+                        horizontal: 50.0,
+                      ),
                     ),
-                    child: const Text(
+                    child: Text(
                       '만남을 시작하시겠습니까?',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 28.0,
+                        fontSize: MediaQuery.of(context).size.width * 0.05, // 화면 너비의 5%로 글자 크기 조정
                         fontWeight: FontWeight.bold,
-                        shadows: [
+                        shadows: const [
                           Shadow(
                             blurRadius: 10.0,
                             color: Colors.black45,
@@ -129,7 +136,7 @@ class _MyHomePageState extends State<MyHomePage>
               ),
             ),
           ),
-          // Team name at the top with shadow effect
+
           const Positioned(
             top: 200, // Increase this value to move it lower
             left: 0,

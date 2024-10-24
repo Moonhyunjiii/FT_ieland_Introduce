@@ -37,6 +37,7 @@ class TeamCoworkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text(
           "우리의 협업 Tool",

@@ -30,6 +30,7 @@ class _SHDetailPageState extends State<SHDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(widget.name),
       ),
@@ -79,14 +80,16 @@ class _SHDetailPageState extends State<SHDetailPage> {
                   // 좋아요 버튼
                   Row(
                     children: [
+                      // '좋아요' 버튼 박스
                       Expanded(
                         child: ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.pink,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 10,
+                            minimumSize: const Size(304, 45),  // width: 304px, height: 45px
+                            backgroundColor: const Color(0xFFFF166F), // 배경색: #FF166F
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),  // border-radius: 10px
                             ),
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                           ),
                           onPressed: () {
                             setState(() {
@@ -96,20 +99,40 @@ class _SHDetailPageState extends State<SHDetailPage> {
                           icon: const Icon(Icons.favorite, color: Colors.white),
                           label: const Text(
                             '좋아요',
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'NanumGothic',  // 폰트 패밀리 이름
+                              fontWeight: FontWeight.w700,  // Bold 폰트 적용
+                            ),
                           ),
                         ),
                       ),
+
                       const SizedBox(width: 10),
-                      Text(
-                        '$likeCount',
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
+
+                      // likeCount 박스
+                      Container(
+                        width: 45,   // width: 45px
+                        height: 45,  // height: 45px
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFFF166F), // 배경색: #FF166F
+                          borderRadius: BorderRadius.circular(10), // border-radius: 10px
+                        ),
+                        child: Center(
+                          child: Text(
+                            '$likeCount',
+                            style: const TextStyle(
+                              fontSize: 20,
+                              color: Colors.white, // 흰색 텍스트
+                              fontFamily: 'NanumGothic',  // 폰트 패밀리 이름
+                              fontWeight: FontWeight.w700,  // Bold 폰트 적용
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
+
                   const SizedBox(height: 20),
                   // 추가 정보
                   Column(
