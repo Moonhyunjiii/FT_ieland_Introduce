@@ -36,25 +36,44 @@ class _BottomNavHomeState extends State<BottomNavHome> {
         showSelectedLabels: true,
         showUnselectedLabels: true,
         currentIndex: _selectedNaviIndex,
-        selectedItemColor: Color(0xFFFF166F), // 선택된 아이콘 색상
-        unselectedItemColor: Color(0xFFD9D9D9), // 선택되지 않은 아이콘 색상
-        backgroundColor: Colors.white,
+        selectedItemColor: const Color(0xFFFF166F), // 선택된 아이콘 색상
+        unselectedItemColor: const Color(0xFFD9D9D9), // 선택되지 않은 아이콘 색상
         onTap: _onBottomNaviItemTapped, // 탭 시 페이지 변경
-        items: const [
+        selectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w700,  // Bold 버전 적용
+          fontFamily: 'NanumGothic',    // Bold 폰트 패밀리
+        ),
+        unselectedLabelStyle: const TextStyle(
+          fontWeight: FontWeight.w400,  // Regular 버전 적용
+          fontFamily: 'NanumGothic',    // Regular 폰트 패밀리
+        ),
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.person), // UI에 맞는 아이콘 설정
+            icon: Image.asset(
+              _selectedNaviIndex == 0 ? 'images/ui1-01.png' : 'images/ui1-02.png',  // 선택 여부에 따라 다른 이미지 표시
+              width: 30,
+              height: 30,
+            ),
             label: 'SNS',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home), // UI에 맞는 아이콘 설정
+            icon: Image.asset(
+              _selectedNaviIndex == 1 ? 'images/ui2-01.png' : 'images/ui2-02.png',  // 선택 여부에 따라 다른 이미지 표시
+              width: 30,
+              height: 30,
+            ),
             label: 'HOME',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.info), // UI에 맞는 아이콘 설정
+            icon: Image.asset(
+              _selectedNaviIndex == 2 ? 'images/ui3-01.png' : 'images/ui3-02.png',  // 선택 여부에 따라 다른 이미지 표시
+              width: 30,
+              height: 30,
+            ),
             label: 'TEAM INFO',
           ),
         ],
-      ),
+      )
     );
   }
 }
